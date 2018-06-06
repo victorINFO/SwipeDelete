@@ -10,20 +10,23 @@ import android.widget.TextView;
 import com.daimajia.swipe.util.Attributes;
 import java.util.ArrayList;
 
+
 public class MainActivity extends AppCompatActivity {
     private TextView tvEmptyTextView;
     private RecyclerView mRecyclerView;
-    private ArrayList<YoutuberModel> mDataSet;
+    private ArrayList<Richiesta> mDataSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         tvEmptyTextView = (TextView) findViewById(R.id.empty_view);
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mDataSet = new ArrayList<>();
         loadData();
+
 
         if(mDataSet.isEmpty()){
             mRecyclerView.setVisibility(View.GONE);
@@ -51,11 +54,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
     public void loadData() {
-
         for (int i = 0; i <= 20; i++) {
-            mDataSet.add(new YoutuberModel("Youtuber " + i, "andiaspin" + i + "@gmail.com"));
-
+            mDataSet.add(new Richiesta(i+"", "Matteo Marchi", "03 Giu 2018", "9:00", "03 Giu 2018", "18:00"));
         }
     }
+
+
 }
